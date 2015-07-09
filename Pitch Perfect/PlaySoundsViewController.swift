@@ -44,11 +44,15 @@ class PlaySoundsViewController: UIViewController {
     }
 
     @IBAction func playSlowAudio(sender: UIButton) {
+        audioEngine.stop()
+        audioEngine.reset()
         audioPlayer.rate = 0.5
         playAudio()
     }
     
     @IBAction func playFastAudio(sender: UIButton) {
+        audioEngine.stop()
+        audioEngine.reset()
         audioPlayer.rate = 1.5
         playAudio()
     }

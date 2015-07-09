@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WKv-sL-wp3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A216g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WKv-sL-wp3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -33,7 +33,7 @@
                                     <action selector="recordAudio:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="nxQ-wf-by6"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recording" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yq-Eh-LYa">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Record" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yq-Eh-LYa">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="14"/>
@@ -196,16 +196,16 @@
                                 <exclude reference="yH2-62-L3e"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="IKj-q6-uNE"/>
+                                <exclude reference="rE2-ad-BMu"/>
+                                <exclude reference="3vQ-c7-kw1"/>
+                                <exclude reference="hQB-Vg-Vwk"/>
                                 <exclude reference="8B0-Cq-1KT"/>
                                 <exclude reference="Yd7-7r-kjZ"/>
                                 <exclude reference="Jlb-4B-w37"/>
                                 <exclude reference="Z1b-80-h6R"/>
-                                <exclude reference="3vQ-c7-kw1"/>
-                                <exclude reference="hQB-Vg-Vwk"/>
                                 <exclude reference="EAS-ZO-oem"/>
                                 <exclude reference="U3M-pg-Ghg"/>
-                                <exclude reference="rE2-ad-BMu"/>
-                                <exclude reference="IKj-q6-uNE"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -217,16 +217,16 @@
                                 <include reference="yH2-62-L3e"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="IKj-q6-uNE"/>
+                                <include reference="rE2-ad-BMu"/>
+                                <include reference="3vQ-c7-kw1"/>
+                                <include reference="hQB-Vg-Vwk"/>
                                 <include reference="8B0-Cq-1KT"/>
                                 <include reference="Yd7-7r-kjZ"/>
                                 <include reference="Jlb-4B-w37"/>
                                 <include reference="Z1b-80-h6R"/>
-                                <include reference="3vQ-c7-kw1"/>
-                                <include reference="hQB-Vg-Vwk"/>
                                 <include reference="EAS-ZO-oem"/>
                                 <include reference="U3M-pg-Ghg"/>
-                                <include reference="rE2-ad-BMu"/>
-                                <include reference="IKj-q6-uNE"/>
                             </mask>
                         </variation>
                     </view>
