@@ -56,12 +56,10 @@
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="wP0-Bs-kiQ" secondAttribute="centerX" id="5jp-BS-bx0"/>
                             <constraint firstItem="2yq-Eh-LYa" firstAttribute="top" secondItem="97K-4L-aYh" secondAttribute="bottom" constant="8" id="8Ia-G8-pgd"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="wP0-Bs-kiQ" secondAttribute="bottom" constant="50" id="GJa-yZ-Upj"/>
                             <constraint firstAttribute="centerY" secondItem="97K-4L-aYh" secondAttribute="centerY" id="Ll5-0N-Uuh"/>
                             <constraint firstAttribute="centerX" secondItem="2yq-Eh-LYa" secondAttribute="centerX" id="M9P-3d-UKd"/>
                             <constraint firstAttribute="centerX" secondItem="97K-4L-aYh" secondAttribute="centerX" id="Y3S-4L-Uix"/>
-                            <constraint firstItem="wP0-Bs-kiQ" firstAttribute="top" secondItem="97K-4L-aYh" secondAttribute="bottom" constant="147" id="lPp-a3-AJ4">
-                                <variation key="widthClass=compact" constant="150"/>
-                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -70,12 +68,12 @@
                                 <exclude reference="wP0-Bs-kiQ"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="8Ia-G8-pgd"/>
-                                <exclude reference="M9P-3d-UKd"/>
                                 <exclude reference="Ll5-0N-Uuh"/>
                                 <exclude reference="Y3S-4L-Uix"/>
+                                <exclude reference="8Ia-G8-pgd"/>
+                                <exclude reference="M9P-3d-UKd"/>
                                 <exclude reference="5jp-BS-bx0"/>
-                                <exclude reference="lPp-a3-AJ4"/>
+                                <exclude reference="GJa-yZ-Upj"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -85,12 +83,12 @@
                                 <include reference="wP0-Bs-kiQ"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="8Ia-G8-pgd"/>
-                                <include reference="M9P-3d-UKd"/>
                                 <include reference="Ll5-0N-Uuh"/>
                                 <include reference="Y3S-4L-Uix"/>
+                                <include reference="8Ia-G8-pgd"/>
+                                <include reference="M9P-3d-UKd"/>
                                 <include reference="5jp-BS-bx0"/>
-                                <include reference="lPp-a3-AJ4"/>
+                                <include reference="GJa-yZ-Upj"/>
                             </mask>
                         </variation>
                     </view>
@@ -175,9 +173,7 @@
                             <constraint firstItem="Sx9-gk-fxp" firstAttribute="leading" secondItem="tdw-zX-nuB" secondAttribute="leadingMargin" constant="30" id="3vQ-c7-kw1"/>
                             <constraint firstItem="UVf-dP-u0k" firstAttribute="leading" secondItem="tdw-zX-nuB" secondAttribute="leadingMargin" constant="30" id="8B0-Cq-1KT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yH2-62-L3e" secondAttribute="trailing" constant="30" id="EAS-ZO-oem"/>
-                            <constraint firstItem="k4a-SN-lxG" firstAttribute="top" secondItem="4Nr-kQ-GML" secondAttribute="bottom" constant="49" id="IKj-q6-uNE">
-                                <variation key="widthClass=compact" constant="50"/>
-                            </constraint>
+                            <constraint firstItem="k4a-SN-lxG" firstAttribute="top" secondItem="4Nr-kQ-GML" secondAttribute="bottom" constant="50" id="IKj-q6-uNE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VtM-bw-c2m" secondAttribute="trailing" constant="24" id="Jlb-4B-w37">
                                 <variation key="widthClass=compact" constant="30"/>
                             </constraint>

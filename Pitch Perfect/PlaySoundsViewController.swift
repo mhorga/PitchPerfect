@@ -32,27 +32,43 @@ class PlaySoundsViewController: UIViewController {
         audioFile = AVAudioFile(forReading: receivedAudio.filePathUrl, error: nil)
     }
     
-    func playAudio() {
-        audioPlayer.stop()
-        audioPlayer.currentTime = 0.0
-        audioPlayer.play()
+    func buttonsInPlayMode() {
         playSlowButton.enabled = false
         playFastButton.enabled = false
         playLowPitchButton.enabled = false
         playHighPitchButton.enabled = false
         stopButton.enabled = true
     }
-
-    @IBAction func playSlowAudio(sender: UIButton) {
+    
+    func buttonsInRecordMode() {
+        playSlowButton.enabled = true
+        playFastButton.enabled = true
+        playLowPitchButton.enabled = true
+        playHighPitchButton.enabled = true
+        stopButton.enabled = false
+    }
+    
+    func resetAudioEngineAndPlayer() {
+        audioPlayer.stop()
         audioEngine.stop()
         audioEngine.reset()
+    }
+    
+    func playAudio() {
+        resetAudioEngineAndPlayer()
+        audioPlayer.currentTime = 0.0
+        audioPlayer.play()
+        buttonsInPlayMode()
+    }
+
+    @IBAction func playSlowAudio(sender: UIButton) {
+        resetAudioEngineAndPlayer()
         audioPlayer.rate = 0.5
         playAudio()
     }
     
     @IBAction func playFastAudio(sender: UIButton) {
-        audioEngine.stop()
-        audioEngine.reset()
+        resetAudioEngineAndPlayer()
         audioPlayer.rate = 1.5
         playAudio()
     }
@@ -66,9 +82,7 @@ class PlaySoundsViewController: UIViewController {
     }
     
     func playAudioWithVariablePitch(pitch: Float){
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+        resetAudioEngineAndPlayer()
         audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
         var changePitchEffect = AVAudioUnitTimePitch()
@@ -79,20 +93,11 @@ class PlaySoundsViewController: UIViewController {
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
         audioEngine.startAndReturnError(nil)
         audioPlayerNode.play()
-        playSlowButton.enabled = false
-        playFastButton.enabled = false
-        playLowPitchButton.enabled = false
-        playHighPitchButton.enabled = false
-        stopButton.enabled = true
+        buttonsInPlayMode()
     }
     
     @IBAction func stopAudio(sender: UIButton) {
-        audioPlayer.stop()
-        audioEngine.stop()
-        playSlowButton.enabled = true
-        playFastButton.enabled = true
-        playLowPitchButton.enabled = true
-        playHighPitchButton.enabled = true
-        stopButton.enabled = false
+        resetAudioEngineAndPlayer()
+        buttonsInRecordMode()
     }
 }
