@@ -30,6 +30,10 @@ class PlaySoundsViewController: UIViewController {
         audioPlayer.enableRate = true
         audioEngine = AVAudioEngine()
         audioFile = AVAudioFile(forReading: receivedAudio.filePathUrl, error: nil)
+        // forces the device to play audio on the speaker, not on the earpiece
+        var session = AVAudioSession.sharedInstance()
+        session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
+        session.overrideOutputAudioPort(AVAudioSessionPortOverride.Speaker, error: nil)
     }
     
     func buttonsInPlayMode() {
