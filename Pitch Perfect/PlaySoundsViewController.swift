@@ -26,14 +26,18 @@ class PlaySoundsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         stopButton.enabled = false
-        audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, error: nil)
+        audioPlayer = try? AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl)
         audioPlayer.enableRate = true
         audioEngine = AVAudioEngine()
-        audioFile = AVAudioFile(forReading: receivedAudio.filePathUrl, error: nil)
+        audioFile = try? AVAudioFile(forReading: receivedAudio.filePathUrl)
         // forces the device to play audio on the speaker, not on the earpiece
-        var session = AVAudioSession.sharedInstance()
-        session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
-        session.overrideOutputAudioPort(AVAudioSessionPortOverride.Speaker, error: nil)
+        let session = AVAudioSession.sharedInstance()
+        do {
+            try session.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try session.overrideOutputAudioPort(AVAudioSessionPortOverride.Speaker)
+        } catch _ {
+            print("Error")
+        }
     }
     
     func buttonsInPlayMode() {
@@ -89,13 +93,17 @@ class PlaySoundsViewController: UIViewController {
         resetAudioEngineAndPlayer()
         audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
-        var changePitchEffect = AVAudioUnitTimePitch()
+        let changePitchEffect = AVAudioUnitTimePitch()
         changePitchEffect.pitch = pitch
         audioEngine.attachNode(changePitchEffect)
         audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
         audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
-        audioEngine.startAndReturnError(nil)
+        do {
+            try audioEngine.start()
+        } catch _ {
+            print("Error")
+        }
         audioPlayerNode.play()
         buttonsInPlayMode()
     }

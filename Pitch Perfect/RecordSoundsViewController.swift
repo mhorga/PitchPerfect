@@ -32,27 +32,30 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         stopButton.enabled = true
         recordButton.enabled = false
         
-        let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+        let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
         let recordingName = "my_audio.wav"
         let pathArray = [dirPath, recordingName]
         let filePath = NSURL.fileURLWithPathComponents(pathArray)
         //println(filePath)
-        var session = AVAudioSession.sharedInstance()
-        session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
-        
-        audioRecorder = AVAudioRecorder(URL: filePath, settings: nil, error: nil)
+        let session = AVAudioSession.sharedInstance()
+        do {
+            try session.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try audioRecorder = AVAudioRecorder(URL: filePath!, settings: [AVSampleRateKey: 44100.0])
+        } catch _ {
+            print("Error")
+        }
         audioRecorder.delegate = self
         audioRecorder.meteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
     }
     
-    func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
+    func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         if(flag) {
             recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent)
             self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
         } else {
-            println("Recording was not successful!")
+            print("Recording was not successful!")
             recordButton.enabled = true
             stopButton.hidden = true
         }
@@ -71,7 +74,11 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         stopButton.enabled = false
         recordButton.enabled = true
         audioRecorder.stop()
-        var audioSession = AVAudioSession.sharedInstance()
-        audioSession.setActive(false, error: nil)
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setActive(false)
+        } catch _ {
+            print("Error")
+        }
     }
 }
